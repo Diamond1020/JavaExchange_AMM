@@ -1982,9 +1982,9 @@
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
 
-"@pancakeswap-libs/uikit@goosedefi/goose-uikit#releases":
+"@pancakeswap-libs/uikit@pastafinance/pasta-uikit#master":
   version "0.10.2"
-  resolved "https://codeload.github.com/goosedefi/goose-uikit/tar.gz/bdb70ab2b843e7cbfde76103852cfa3435a4be1b"
+  resolved "https://codeload.github.com/pastafinance/pasta-uikit/tar.gz/ffe389707807294dd522a1a8065fcf5dc05885e7"
   dependencies:
     "@types/lodash" "^4.14.162"
     "@types/styled-system" "^5.1.10"

@@ -21,23 +21,35 @@ const useGetPriceData = () => {
   const [data, setData] = useState<number>(0)
 
   const multicallContract = useMulticallContract();
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         if(multicallContract){
-          const {cakeAddress, busdAddress, lpAddress} = priceContracts;
+          const {cakeAddress, bnbAddress, lpAddress, busdAddress, lpAddress1} = priceContracts;
           const calls = [
             [cakeAddress, ERC20_INTERFACE.encodeFunctionData("balanceOf", [lpAddress])],
-            [busdAddress, ERC20_INTERFACE.encodeFunctionData("balanceOf", [lpAddress])],
+            [bnbAddress, ERC20_INTERFACE.encodeFunctionData("balanceOf", [lpAddress])],
           ];
 
           const [resultsBlockNumber, result] = await multicallContract.aggregate(calls);
-          const [cakeAmount, busdAmount] = result.map(r=>ERC20_INTERFACE.decodeFunctionResult("balanceOf", r));
+          const [cakeAmount, bnbAmount] = result.map(r=>ERC20_INTERFACE.decodeFunctionResult("balanceOf", r));
           const cake = new BigNumber(cakeAmount);
-          const busd = new BigNumber(busdAmount);
-          const cakePrice = busd.div(cake).toNumber();
+          const bnb = new BigNumber(bnbAmount);
+
+          const calls1 = [
+            [busdAddress, ERC20_INTERFACE.encodeFunctionData("balanceOf", [lpAddress1])],
+            [bnbAddress, ERC20_INTERFACE.encodeFunctionData("balanceOf", [lpAddress1])],
+          ];
+
+          const [resultsBlockNumber1, result1] = await multicallContract.aggregate(calls1);
+          const [busdAmount1, bnbAmount1] = result1.map(r=>ERC20_INTERFACE.decodeFunctionResult("balanceOf", r));
+          const busd1 = new BigNumber(busdAmount1);
+          const bnb1 = new BigNumber(bnbAmount1);
+          
+          const bnbPrice = busd1.div(bnb1).toNumber();
+          const cakePrice = bnbPrice * (bnb.div(cake).toNumber());
           setData(cakePrice)
+          console.log("hms", cakePrice)
         }
       } catch (error) {
         console.error('Unable to fetch price data:', error)

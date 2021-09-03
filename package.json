@@ -88,7 +88,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
-    "integration-test": "start-server-and-test 'serve build -l 3000' http://localhost:3000 'cypress run'"
+    "integration-test": "start-server-and-test 'serve build -l 3001' http://localhost:3001 'cypress run'"
   },
   "browserslist": {
     "production": [
@@ -102,5 +102,9 @@
       "last 1 safari version"
     ]
   },
-  "license": "GPL-3.0-or-later"
+  "license": "GPL-3.0-or-later",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/pastafinance/pasta-frontend-amm.git",
+  "author": "Marinko99 <marinkodeveloper21@gmail.com>"
 }

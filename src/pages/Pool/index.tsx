@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react'
 import { ThemeContext } from 'styled-components'
-import { Pair } from '@pancakeswap-libs/sdk'
+import { Pair } from '@pancakeswap-libs/sdk-v2'
 import { Button, CardBody, Text } from '@pancakeswap-libs/uikit'
 import { Link } from 'react-router-dom'
 import CardNav from 'components/CardNav'
@@ -78,7 +78,7 @@ export default function Pool() {
                 <Question
                   text={TranslateString(
                     130,
-                    'When you add liquidity, you are given pool tokens that represent your share. If you don’t see a pool you joined in this list, try importing a pool below.'
+                    'When you add liquidity, you are given pool tokens that represent your share. If you donï¿½t see a pool you joined in this list, try importing a pool below.'
                   )}
                 />
               </RowBetween>

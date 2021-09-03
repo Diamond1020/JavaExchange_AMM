@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { AddressZero } from '@ethersproject/constants'
-import { TokenAmount, Token, ChainId, Percent, JSBI } from '@pancakeswap-libs/sdk'
+import { TokenAmount, Token, ChainId, Percent, JSBI } from '@pancakeswap-libs/sdk-v2'
 
 import {
   getEtherscanLink,
@@ -29,7 +29,7 @@ describe('utils', () => {
       expect(getEtherscanLink(3, 'abc', 'address')).toEqual('https://bscscan.com/address/abc')
     })
     it('enum', () => {
-      expect(getEtherscanLink(ChainId.RINKEBY, 'abc', 'address')).toEqual('https://bscscan.com/address/abc')
+      expect(getEtherscanLink(ChainId.BSCTESTNET, 'abc', 'address')).toEqual('https://bscscan.com/address/abc')
     })
   })
 
